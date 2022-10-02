@@ -41,4 +41,28 @@ contract mintNFT {
         uint id = _createIdNft(_name);
         _pushNft(_name, id);
     }
+
+    function getIndexNftWithAddress(address _owner) public view returns (uint[] memory) {
+        uint[] memory index = new uint[](ntfCount[_owner]);
+        uint counter = 0;
+        for (uint i = 0; i < myNft.length; i++) {
+            if (ntfOwner[i] == _owner) {
+                index[counter] = i;
+                counter++;
+            }
+        }
+        return index;
+    }
+
+    function getIndexNft() public view returns (uint[] memory) {
+        uint[] memory index = new uint[](ntfCount[msg.sender]);
+        uint counter = 0;
+        for (uint i = 0; i < myNft.length; i++) {
+            if (ntfOwner[i] == msg.sender) {
+                index[counter] = i;
+                counter++;
+            }
+        }
+        return index;
+    }
 }
