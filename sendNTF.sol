@@ -1,6 +1,6 @@
 pragma solidity >=0.7.0 <0.9.0;
 
-import "./NFT.sol";
+import "./createNFT.sol";
 import "./erc721.sol";
 
 contract sendNft is mintNFT, ERC721 {
